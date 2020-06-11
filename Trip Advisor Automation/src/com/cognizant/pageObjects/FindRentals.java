@@ -1,18 +1,12 @@
 package com.cognizant.pageObjects;
 
 
-
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 
 public class FindRentals 
 {
@@ -48,6 +42,9 @@ public class FindRentals
 	
 	@FindBy(xpath="//span[contains(text(),'Find holiday rentals')]")
 	public static WebElement btnfindRental;
+	
+	@FindBy(xpath="//div[contains(@class,'ui_column') and contains(text(),'holiday rental')]")
+	public static WebElement title;
 		
 	
 	/*public FindRentals(WebDriver driver)
@@ -56,6 +53,15 @@ public class FindRentals
 		PageFactory.initElements(driver, this);		
 	}
 	*/
+	
+	
+	
+	
+	@FindBy(xpath="//span[@class='{geoClass}']")
+	public static WebElement locationCheck;
+	
+	@FindBy(xpath="//span[contains(text(),'Nairobi Houses')]")
+	public static WebElement locationName;
 	
 	
 	

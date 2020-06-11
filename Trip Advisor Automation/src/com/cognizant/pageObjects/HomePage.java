@@ -18,6 +18,7 @@ public class HomePage
 	@FindBy(xpath="//a[@class='lskmYLHJ' and @href='/Rentals' or contains(text(),'Holiday homes')]")
 	public static WebElement tabHolidayHomes;
 	
+	
 	/*public HomePage(WebDriver driver)
 	{ 
 		this.driver=driver;
@@ -25,6 +26,15 @@ public class HomePage
 
 		PageFactory.initElements(driver, this);		
 	}*/
+	
+	@FindBy(xpath="//span[@class='_1Qo7YQ01' or contains(text(),'Holiday Homes')]")
+	public static WebElement tabMoreHolidayHomes;
+	
+	@FindBy(xpath="//div[@class='U2O9sR7-']//a[1]")
+	public static WebElement autoSuggestedLocation;
+	
+	@FindBy(xpath="//button[@class='_1yB-kafB']")
+	public static WebElement btnMore;
 	
 	
 	

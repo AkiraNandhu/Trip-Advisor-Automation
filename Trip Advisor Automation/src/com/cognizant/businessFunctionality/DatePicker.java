@@ -54,8 +54,13 @@ public class DatePicker
 		commonFunction.click(FindRentals.dtpCheckIn);
 
 		String strUIMonth=commonFunction.getElementValue(FindRentals.dtpCheckInTitle);
+	
 		
 		strUIMonth=strUIMonth.substring(0,strUIMonth.indexOf(" "));
+		strMonth=strMonth.substring(0,3);
+		
+		System.out.println("UI month:"+strUIMonth);
+		System.out.println("tomorrow month:"+strMonth);
 		 
 		if (strMonth.equalsIgnoreCase(strUIMonth)) 
 		{
@@ -85,9 +90,9 @@ public class DatePicker
 			
 		}
 	}
-	public void ClickCheckOutDate() 
+	public void ClickCheckOutDate(int noOfDays) 
 	{
-		int days=SetCheckOutDate(5);
+		int days=SetCheckOutDate(noOfDays);
 		int size= commonFunction.getListsize(FindRentals.dtpAvailableDates);
 
 		String path="";
