@@ -52,12 +52,7 @@ public class DriverSetup {
 		
 		
 		getDriver();
-		
-		testCase.log(Status.INFO, "Launching Application :"+baseUrl);
-		driver.get(baseUrl);
-	
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+
 		
 	} 
 	
@@ -69,7 +64,7 @@ public class DriverSetup {
 		extentReport.flush();
 		
 	}
-	/*@BeforeMethod
+	@BeforeClass
 	public void startApplication() throws FileNotFoundException, IOException
 	{
 		testCase.log(Status.INFO, "Launching Application :"+baseUrl);
@@ -80,12 +75,12 @@ public class DriverSetup {
 			
 	}
 	
-	@AfterMethod
+	@AfterClass
 	public void endApplication()
 	{
 		System.out.println("in after Test");
 		//driver.navigate().to(baseUrl);
-	}*/
+	}
 	public static Properties loadPropertyFile() throws IOException
 	{
 		FileInputStream fileInputStream=new FileInputStream("config.properties");
