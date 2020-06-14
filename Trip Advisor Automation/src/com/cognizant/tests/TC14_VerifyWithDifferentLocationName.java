@@ -76,7 +76,7 @@ public class TC14_VerifyWithDifferentLocationName extends DriverSetup
 	@Test(dataProvider="LocationName data")
 	public void fetchHolidayHomes(String locationName) throws InterruptedException 
 	{
-		testCase=extentReport.createTest("Verifying selected location details are displayed");
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Verifying selected location details are displayed");
 
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);

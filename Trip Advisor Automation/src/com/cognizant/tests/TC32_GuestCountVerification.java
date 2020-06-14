@@ -75,7 +75,7 @@ public class TC32_GuestCountVerification extends DriverSetup
 	@Test
 	public void fetchHolidayHomes() throws InterruptedException
 	{
-		testCase=extentReport.createTest("Checking Sortby Filter option");
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Checking guest count in holiday homes");
 
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);

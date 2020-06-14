@@ -55,11 +55,15 @@ public class TC12_VerifyHolidayHomesViaMoreTab extends DriverSetup
 	@Test
 	public void fetchHolidayHomes() 
 	{
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Verifying Holiday homes via more tab");
+
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);
 		PageFactory.initElements(driver, HolidayHomes.class);
 
 		commonFunction=new CommonFunction(driver);
+		
+		
 		searchFor();
 		checkHolidayHome();
 				

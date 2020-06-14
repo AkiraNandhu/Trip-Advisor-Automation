@@ -88,7 +88,7 @@ public class TC43_SuitabilityBasedFilter extends DriverSetup
 	@Test
 	public void fetchHolidayHomes() throws InterruptedException
 	{
-		testCase=extentReport.createTest("Checking Sortby Filter option");
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Check Suitability filter is applied");
 
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);

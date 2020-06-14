@@ -55,7 +55,7 @@ public class TC41_SortByFilter extends DriverSetup
 	@Test
 	public void fetchHolidayHomes()
 	{
-		testCase=extentReport.createTest("Checking Sortby Filter option");
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Checking Sortby Filter option");
 
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);

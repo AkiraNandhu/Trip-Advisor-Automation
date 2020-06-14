@@ -69,6 +69,8 @@ public class TC21_FetchHolidaysWithDates extends DriverSetup
 		//Display top 5 holiday homes based on specifications(Location,check-in,check-out dates)
 		testCase.log(Status.INFO, "Displays holiday homes");
 		commonFunction.getHolidayHomeNames(HolidayHomes.lstHolidayHomeNames);
+		commonFunction.getHolidayHomeNames(HolidayHomes.lstHolidayHomePrice);
+
 		
 	}
 	
@@ -76,7 +78,7 @@ public class TC21_FetchHolidaysWithDates extends DriverSetup
 	
 	public void fetchHolidayHomes() 
 	{
-		testCase=extentReport.createTest("Fetching Holiday homes with check-in & check-out  dates");
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Fetching Holiday homes with check-in & check-out  dates");
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);
 		PageFactory.initElements(driver, HolidayHomes.class);

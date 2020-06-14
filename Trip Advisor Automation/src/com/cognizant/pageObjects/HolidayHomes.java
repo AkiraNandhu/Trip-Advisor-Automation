@@ -46,6 +46,10 @@ public class HolidayHomes
 	@FindBy(xpath="//*[contains(@class,'vr-srp-propertyCard-pieces-PropertyTitleSection__propertyTitle--351Sr')]")
 	public static List<WebElement> lstHolidayHomeNames;
 	
+	
+	@FindBy(xpath="//div[@class='vr-srp-propertyCard-pieces-Commerce__neighborhoodRowContainer--23-_E']")
+	public static List<WebElement> lstHolidayHomePrice;
+	
 	@FindBy(xpath="//li[@class='yJ4mfBYR']/div")
 	public static List<WebElement> chosenFilters;
 	
@@ -77,6 +81,7 @@ public class HolidayHomes
 	
 	@FindBy(xpath="//div[@id='HEADING']/h1[@class='page_h1_line1']")
 	public static WebElement locationTitle;
+	
 	
 	
 

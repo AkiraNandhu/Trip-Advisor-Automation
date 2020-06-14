@@ -12,9 +12,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -51,6 +53,12 @@ public class DriverSetup {
 		
 		getDriver();
 		
+		testCase.log(Status.INFO, "Launching Application :"+baseUrl);
+		driver.get(baseUrl);
+	
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+		
 	} 
 	
 	@AfterSuite
@@ -61,7 +69,7 @@ public class DriverSetup {
 		extentReport.flush();
 		
 	}
-	@BeforeClass
+	/*@BeforeMethod
 	public void startApplication() throws FileNotFoundException, IOException
 	{
 		testCase.log(Status.INFO, "Launching Application :"+baseUrl);
@@ -72,12 +80,12 @@ public class DriverSetup {
 			
 	}
 	
-	@AfterClass
+	@AfterMethod
 	public void endApplication()
 	{
 		System.out.println("in after Test");
 		//driver.navigate().to(baseUrl);
-	}
+	}*/
 	public static Properties loadPropertyFile() throws IOException
 	{
 		FileInputStream fileInputStream=new FileInputStream("config.properties");

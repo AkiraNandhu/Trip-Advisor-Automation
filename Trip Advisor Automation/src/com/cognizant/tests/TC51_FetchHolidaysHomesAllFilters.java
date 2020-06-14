@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -28,19 +29,6 @@ public class TC51_FetchHolidaysHomesAllFilters extends DriverSetup
 	public Object[][] getExcelData() throws FileNotFoundException, IOException
 	{
 		Object[][] data=ExcelUtilities.getExcelData("TripAdvisor_Data");
-		
-		/*System.out.println("loc :"+data[1][0].getClass());
-		System.out.println("c in :"+data[1][1].getClass());
-		System.out.println("days :"+data[1][2].getClass());
-		System.out.println("gues :"+data[1][3].getClass());
-
-		System.out.println("sort :"+data[1][4].getClass());
-
-		System.out.println("sui :"+data[1][5].getClass());
-		System.out.println("ame :"+data[1][6].getClass());
-		System.out.println("amount :"+data[1][7].getClass());
-		
-		System.out.println("From driver :"+data[3][3]);*/
 		return data;
 	}
 
@@ -105,13 +93,37 @@ public class TC51_FetchHolidaysHomesAllFilters extends DriverSetup
 		commonFunction.click(amenitiesElement);
 	}
 	
+	public void checkGuestCount(double guestCount)
+	{
+		int noOfGuest=(int)guestCount;
+		noOfGuest=noOfGuest-2;
+		commonFunction.click(HolidayHomes.txtGuest);
+		for(int i=1;i<=noOfGuest;i++)
+			commonFunction.click(HolidayHomes.btnGuestCount);
+		
+		System.out.println(commonFunction.getElementValue(HolidayHomes.txtGuest));
+	
+		
+		boolean result=commonFunction.checkingGuest(HolidayHomes.matchSleeps,noOfGuest);
+		
+		Assert.assertEquals(true, result);
+		if(result)
+			testCase.log(Status.PASS, "Displayed with corect guest count");
+		else
+			testCase.log(Status.FAIL, "Mismatch data displayed");
+
+
+		
+	}
+	
 	public void displayDetails() throws InterruptedException
 	{
 		
 		//Display top 5 holiday homes based on specifications(Location,check-in,check-out dates)
 		testCase.log(Status.INFO, "Displays holiday homes");
 		commonFunction.getHolidayHomeNames(HolidayHomes.lstHolidayHomeNames);
-		
+		commonFunction.getHolidayHomeNames(HolidayHomes.lstHolidayHomePrice);
+
 	}
 	
 	public void choosingSortby()
@@ -126,7 +138,7 @@ public class TC51_FetchHolidaysHomesAllFilters extends DriverSetup
 	@Test(dataProvider="TripAdvisor data")
 	public void fetchHolidayHomes(String locationName,String check_in,Double noOfDays,Double guestCount,String sortType,String suitability,String amenities,Double amount) throws InterruptedException 
 	{
-		testCase=extentReport.createTest("Fetching Holiday homes with check-in & check-out  dates");
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Fetching Holiday homes with aLl filters");
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);
 		PageFactory.initElements(driver, HolidayHomes.class);
@@ -134,12 +146,11 @@ public class TC51_FetchHolidaysHomesAllFilters extends DriverSetup
 		commonFunction=new CommonFunction(driver);
 		datePicker=new DatePicker(driver);
 		
-		System.out.println("I am in test case with dates");
 		
 		searchFor();
 		
 		provideDetails(locationName,noOfDays);
-		
+		checkGuestCount(guestCount);
 	
 		choosingSuitability(suitability);
 		//choosingSortby();

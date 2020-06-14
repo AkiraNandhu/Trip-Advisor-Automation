@@ -37,6 +37,9 @@ public class HomePage
 	public static WebElement btnMore;
 	
 	
+	@FindBy(xpath="//a[@class='lskmYLHJ' and @href='/Cruises' or contains(text(),'Cruises')]")
+	public static WebElement tabCruises;
+	
 	
 	
 	

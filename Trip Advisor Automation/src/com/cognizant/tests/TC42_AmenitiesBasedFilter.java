@@ -96,7 +96,7 @@ public class TC42_AmenitiesBasedFilter extends DriverSetup
 	@Test
 	public void fetchHolidayHomes() 
 	{
-		testCase=extentReport.createTest("Checking Sortby Filter option");
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Check for amenities are selected ");
 
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);

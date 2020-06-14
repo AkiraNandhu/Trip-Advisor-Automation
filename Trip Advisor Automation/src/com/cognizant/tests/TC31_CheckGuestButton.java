@@ -45,7 +45,7 @@ public class TC31_CheckGuestButton extends DriverSetup
 	@Test
 	public void fetchHolidayHomes()
 	{
-		testCase=extentReport.createTest("Checking Guest Count button");
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Checking Guest Count button");
 
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);

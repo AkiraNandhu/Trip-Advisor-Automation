@@ -48,6 +48,8 @@ public class TC13_SearchBarHolidayHomes extends DriverSetup
 	@Test
 	public void fetchHolidayHomes() 
 	{
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Verifying holiady homes via search bar");
+
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);
 		PageFactory.initElements(driver, HolidayHomes.class);

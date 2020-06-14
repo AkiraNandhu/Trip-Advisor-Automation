@@ -18,7 +18,7 @@ import com.cognizant.pageObjects.*;
 
 public class TC22_FetchHolidayHomesWithoutDates extends DriverSetup
 {
-	
+	CommonFunction commonFunction;
 	
 	
 	public void searchFor()
@@ -50,12 +50,11 @@ public class TC22_FetchHolidayHomesWithoutDates extends DriverSetup
 		commonFunction.getHolidayHomeNames(HolidayHomes.lstHolidayHomeNames);
 	}
 	
-	CommonFunction commonFunction;
+	
 	
 	@Test
 	public void fetchHolidayHomes() throws InterruptedException 
 	{
-		//ExtentReports extentReport=new ExtentReports();
 		System.out.println("Fetching Holiday homes without dates");
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);

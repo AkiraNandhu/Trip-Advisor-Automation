@@ -3,14 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.cognizant.tests.FetchHolidayHomesWithoutDates">
+      <class name="com.cognizant.tests.TC23_CheckLocationBoxError">
         <methods>
-          <include name="startApplication"/>
           <include name="driverSetup"/>
-          <include name="fetchHolidayHomes"/>
           <include name="closeDriverSetup"/>
+          <include name="fetchHolidayHomes"/>
         </methods>
-      </class> <!-- com.cognizant.tests.FetchHolidayHomesWithoutDates -->
+      </class> <!-- com.cognizant.tests.TC23_CheckLocationBoxError -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
