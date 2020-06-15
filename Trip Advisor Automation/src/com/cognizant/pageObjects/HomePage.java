@@ -1,7 +1,5 @@
 package com.cognizant.pageObjects;
 
-
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,7 +15,6 @@ public class HomePage
 	
 	@FindBy(xpath="//a[@class='lskmYLHJ' and @href='/Rentals' or contains(text(),'Holiday homes')]")
 	public static WebElement tabHolidayHomes;
-	
 	
 	/*public HomePage(WebDriver driver)
 	{ 
@@ -40,8 +37,11 @@ public class HomePage
 	@FindBy(xpath="//a[@class='lskmYLHJ' and @href='/Cruises' or contains(text(),'Cruises')]")
 	public static WebElement tabCruises;
 	
+	//input[contains(@class,'_3qLQ-U8m') and contains(@placeholder,'where')]
+	@FindBy(xpath="//input[contains(@class,'_3qLQ-U8m') and contains(@placeholder,'where')]")
+	public static WebElement txtLocation;
 	
-	
+	//_3qLQ-U8m _3TADk3fX
 	
 	
 }

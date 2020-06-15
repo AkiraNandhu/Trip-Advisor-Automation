@@ -24,30 +24,35 @@ public class CommonFunction
 
 	}
 	
+	//set the webelement value
 	public void setElementValue(WebElement webElement,String value)
 	{
 		webElement.sendKeys(value);		
 	}
 	
 	
-	
+	//Gets the webelement value and return the string
 	public String getElementValue(WebElement webElement)
 	{
 		wait.until(ExpectedConditions.visibilityOf(webElement));
 		return webElement.getText();	
 	}
 	
+	//Clicks the webElement
 	public void click(WebElement webElement)
 	{
 		wait.until(ExpectedConditions.elementToBeClickable(webElement));
 		webElement.click();
 	}
 	
+	//Get the size of the webelement 
 	public int getListsize(List<WebElement> webelement) 
 	{
 		
 		return webelement.size();
 	}
+	
+	//Get the element value stored in a list of webelement 
 	public void getHolidayHomeNames(List<WebElement> webelement)
 	{
 		int j;
@@ -60,12 +65,14 @@ public class CommonFunction
 		
 	}
 	
+	//check for element enable
 	public Boolean checkElement(WebElement webElement) {
 		Boolean check=webElement.isEnabled();
 		return check;
 		
 	}
 	
+	//Get the chosen filters data
 	public  String[] getChosenFilters(List<WebElement> webelement)
 	{
 		jse.executeScript("arguments[0].scrollIntoView(true);", HolidayHomes.filters);
@@ -84,6 +91,7 @@ public class CommonFunction
 		
 	}
 	
+	//check for guest count in result
 	public boolean checkingGuest(List<WebElement> element,int noOfGuest)
 	{
 		System.out.println("Top 5 Holiday Homes based on your wish");
@@ -96,8 +104,6 @@ public class CommonFunction
 			String actualText=element.get(i).getText();
 			actualSleeps=actualText.substring(actualText.length() -1);
 			int noOfSleeps=(Integer.parseInt(actualSleeps));
-			//System.out.println(" xxx :"+actualText+" :"+actualSleeps+" :"+noOfSleeps);
-
 			if(noOfGuest<=noOfSleeps)
 			{
 				status=true;
@@ -107,8 +113,6 @@ public class CommonFunction
 			else
 				break;
 			
-			
-
 		}
 		return status;
 		

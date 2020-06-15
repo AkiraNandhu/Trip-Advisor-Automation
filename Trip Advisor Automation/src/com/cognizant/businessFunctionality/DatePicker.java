@@ -29,14 +29,15 @@ public class DatePicker
 		
 	}
 
+	//set the checkout date based on specified no of days
 	public int SetCheckOutDate(int Days)
 	{
 		int days=Integer.parseInt(commonFunction.getElementValue(FindRentals.dtpVisibleCheckOut));
-		//int days=Integer.parseInt(homePage.GetElementValue(VisibleCheckOut));
 		noOfDays=Days;
 		return days+Days;
 	}
 	
+	//Selects the tomorrow date for check-in
 	public void ClickTomorrowCheckInDate() 
 	{
 		PageFactory.initElements(driver,FindRentals.class);
@@ -59,8 +60,8 @@ public class DatePicker
 		strUIMonth=strUIMonth.substring(0,strUIMonth.indexOf(" "));
 		strMonth=strMonth.substring(0,3);
 		
-		System.out.println("UI month:"+strUIMonth);
-		System.out.println("tomorrow month:"+strMonth);
+		/*System.out.println("UI month:"+strUIMonth);
+		System.out.println("tomorrow month:"+strMonth); */
 		 
 		if (strMonth.equalsIgnoreCase(strUIMonth)) 
 		{
@@ -90,6 +91,8 @@ public class DatePicker
 			
 		}
 	}
+	
+	//Select the check-out date based on no of days
 	public void ClickCheckOutDate(int noOfDays) 
 	{
 		int days=SetCheckOutDate(noOfDays);

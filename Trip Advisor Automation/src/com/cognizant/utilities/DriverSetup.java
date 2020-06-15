@@ -27,10 +27,11 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 
-public class DriverSetup {
+public class DriverSetup 
+{
 	public static WebDriver driver;
 	public static Properties properties;
-	static String baseUrl;
+	public static String baseUrl;
 	
 	public static ExtentReports extentReport;
 	public static ExtentHtmlReporter htmlReporter;
@@ -38,7 +39,7 @@ public class DriverSetup {
 	public static Object[][] data;
 	
 	
-	@BeforeSuite
+	@BeforeSuite(groups= {"SmokeTest","HolidayHomes","Cruise"})
 	public void driverSetup() throws IOException  
 	{
 		extentReport =new ExtentReports();
@@ -56,7 +57,7 @@ public class DriverSetup {
 		
 	} 
 	
-	@AfterSuite
+	@AfterSuite(groups= {"SmokeTest","HolidayHomes","Cruise"})
 	public void closeDriverSetup()
 	{
 		
@@ -64,10 +65,10 @@ public class DriverSetup {
 		extentReport.flush();
 		
 	}
-	@BeforeClass
-	public void startApplication() throws FileNotFoundException, IOException
+	@BeforeClass(groups= {"SmokeTest","HolidayHomes","Cruise"})
+ 	public void startApplication() throws FileNotFoundException, IOException
 	{
-		testCase.log(Status.INFO, "Launching Application :"+baseUrl);
+		//testCase.log(Status.INFO, "Launching Application :"+baseUrl);
 		driver.get(baseUrl);
 	
 		driver.manage().window().maximize();
@@ -75,12 +76,14 @@ public class DriverSetup {
 			
 	}
 	
-	@AfterClass
+	@AfterClass(groups= {"SmokeTest","HolidayHomes","Cruise"})
 	public void endApplication()
 	{
 		System.out.println("in after Test");
 		//driver.navigate().to(baseUrl);
 	}
+	
+	//Loads properties from configuration file
 	public static Properties loadPropertyFile() throws IOException
 	{
 		FileInputStream fileInputStream=new FileInputStream("config.properties");
@@ -92,6 +95,7 @@ public class DriverSetup {
 		
 	}
     
+	//Loads driver
 	public static void getDriver() throws IOException 
 	{
 		
@@ -122,6 +126,7 @@ public class DriverSetup {
 			
 	}
 	
+	//close the driver
 	public static void closeDriver()
 	{
 		driver.quit();

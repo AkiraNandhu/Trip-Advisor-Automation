@@ -18,6 +18,7 @@ public class ExcelUtilities
 	static XSSFCell cell;
 
 	
+	//Gets Excel data
 	public static Object [][] getExcelData(String sheetName) throws FileNotFoundException ,IOException
 	{
 		//Get the excel file path
@@ -26,8 +27,6 @@ public class ExcelUtilities
 		
 		String filePath=System.getProperty("user.dir")+"\\src\\com\\cognizant\\utilities\\Excel_Data.xlsx";
 
-
-		//String path="C:\\Users\\New\\CTS Workspace\\miniproject\\src\\project\\Excel_Data.xlsx";
 		Object [][] excelData;
 		FileInputStream Xcelfile = new FileInputStream(filePath);
 		Myworkbook = new XSSFWorkbook(Xcelfile);
