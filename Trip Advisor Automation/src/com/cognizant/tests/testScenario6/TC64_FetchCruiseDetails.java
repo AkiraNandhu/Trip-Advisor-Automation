@@ -21,10 +21,14 @@ public class TC64_FetchCruiseDetails extends DriverSetup
 {
 	CommonFunction commonFunction;
 	ArrayList<String> tabs;
+	String strClassName=this.getClass().getSimpleName();
+	
 	@DataProvider(name="Cruise data")
 	public Object[][] getExcelData() throws FileNotFoundException, IOException
 	{
 		Object[][] data=ExcelUtilities.getExcelData("Cruise_Data");
+		ExcelUtilities.displayStatus(strClassName,"Pass");
+
 		return data;
 	}
 	
@@ -93,7 +97,7 @@ public class TC64_FetchCruiseDetails extends DriverSetup
 		PageFactory.initElements(driver, CruisesSelection.class);
 		PageFactory.initElements(driver, CruiseDetails.class);
 
-		testCase=extentReport.createTest(this.getClass().getSimpleName()+" :Fetching Cruise details");
+		testCase=extentReport.createTest(strClassName+" :Fetching Cruise details");
 
 		commonFunction=new CommonFunction(driver);
 		tabs=new ArrayList<String>(driver.getWindowHandles());

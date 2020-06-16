@@ -60,7 +60,6 @@ public class DriverSetup
 	@AfterSuite(groups= {"SmokeTest","HolidayHomes","Cruise"})
 	public void closeDriverSetup()
 	{
-		
 		closeDriver();
 		extentReport.flush();
 		

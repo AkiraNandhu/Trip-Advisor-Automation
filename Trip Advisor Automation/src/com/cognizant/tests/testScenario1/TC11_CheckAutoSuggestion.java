@@ -48,7 +48,7 @@ public class TC11_CheckAutoSuggestion extends DriverSetup
 	@Test(groups= {"SmokeTest"})
 	public void fetchHolidayHomes() throws InterruptedException 
 	{
-		testCase=extentReport.createTest("Verifying autosuggestion location search box");
+		testCase=extentReport.createTest(this.getClass().getSimpleName()+"Verifying autosuggestion location search box");
 		PageFactory.initElements(driver, HomePage.class);
 		PageFactory.initElements(driver, FindRentals.class);
 

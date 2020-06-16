@@ -1,7 +1,9 @@
 package com.cognizant.utilities;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -35,7 +37,7 @@ public class ExcelUtilities
 		int rowCount=sheet.getPhysicalNumberOfRows();
 		int columnCount=sheet.getRow(1).getPhysicalNumberOfCells();
 		
-		System.out.println("Rows :"+rowCount+" col :"+columnCount);
+		//System.out.println("Rows :"+rowCount+" col :"+columnCount);
 		excelData=new Object[rowCount-1][columnCount];
 		int count=0;
 		for(int i=1;i<rowCount;i++)
@@ -73,7 +75,72 @@ public class ExcelUtilities
        Myworkbook.close();
        Xcelfile.close();
        return excelData;
+       
 			
 	}
+	
+	public static void excelStatusReport() throws IOException
+	{
+		String filePath=System.getProperty("user.dir")+"\\src\\com\\cognizant\\utilities\\Excel_StatusReport.xlsx";
+		FileInputStream Xcelfile = new FileInputStream(filePath);
+		Myworkbook = new XSSFWorkbook(Xcelfile);
+		sheet = Myworkbook.getSheet("StatusReport");
+		
+		for(int i=0;i<=4;i++)
+		{
+		
+			sheet.createRow(i).createCell(2).setCellValue("Pass");
+			sheet.getRow(i).createCell(2).setCellValue("Fail");
+		}
+		
+		FileOutputStream writeFile;
+		
+		writeFile = new FileOutputStream("filePath");
+					
+		Myworkbook.write(writeFile);
+		
+	
+		Myworkbook.close();
+		
+
+		
+	}
+	
+		public static void displayStatus(String testCaseName, String status) throws IOException
+		{
+			String filePath=System.getProperty("user.dir")+"\\src\\com\\cognizant\\utilities\\Excel_StatusReport.xlsx";
+
+			try {
+		
+			FileInputStream file=new FileInputStream(new File(filePath));
+			
+			XSSFWorkbook  Myworkbook=new XSSFWorkbook(file);
+			XSSFSheet sheet= Myworkbook.getSheet("StatusReport");
+			
+			 int totalRow=sheet.getLastRowNum()+1;
+			 
+			 for(int i=1;i<totalRow;i++)
+			 {
+				 XSSFRow row= sheet.getRow(i);
+				 String cell=row.getCell(1).getStringCellValue();
+				 cell="TC64_FetchCruiseDetails";
+				 if(cell.contains(testCaseName))
+				 {
+					 row.createCell(2).setCellValue(status);
+					 file.close();
+					 FileOutputStream fos=new FileOutputStream(new File(filePath));
+					 Myworkbook.write(fos);
+					 fos.close();
+					 Myworkbook.close();
+					 break;
+				 }
+			 }
+			
+		}
+			
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		}
 
 }
